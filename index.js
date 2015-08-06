@@ -31,15 +31,15 @@ app.get('/cool', function(request, response) {
 app.get('/db', function(request, response) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done){
       console.log(client);
-  //     client.query('SELECT * FROM test_table', function(err, result){
-  //       done();
-  //       if(err) {
-  //         console.log(err);
-  //         response.send("Error " + err); 
-  //       } else {
-  //         response.render('pages/db', {results: result.rows}); 
-  //       }
-	 // });
+       client.query('SELECT * FROM test_table', function(err, result){
+         done();
+         if(err) {
+           console.log(err);
+           response.send("Error " + err); 
+         } else {
+           response.render('pages/db', {results: result.rows}); 
+         }
+	  });
    });
 })
 
