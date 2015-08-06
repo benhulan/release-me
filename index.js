@@ -1,6 +1,7 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
+var pg = require('pg');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -23,10 +24,9 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-var pg = require('pg');
 
-var conString = "postgres://username:password@localhost/database";
-var client = new pg.Client(conString);
+// var conString = "postgres://username:password@localhost/database";
+// var client = new pg.Client(conString);
 
 app.get('/db', function(request, response) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done){
