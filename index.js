@@ -12,18 +12,18 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  var result = '';
-  var times = process.env.TIMES || 5;
-  for (i=0; i < times; i++) {
-    result += cool();
-    response.send(result);
-  }
+  response.render('pages/index')
+  // var result = '';
+  // var times = process.env.TIMES || 5;
+  // for (i=0; i < times; i++) {
+  //   result += cool();
+  //   response.send(result);
+  // }
 });
 
 app.get('/cool', function(request, response) {
   response.send(cool());
 });
-
 
 // var conString = "postgres://username:password@localhost/database";
 // var client = new pg.Client(conString);
