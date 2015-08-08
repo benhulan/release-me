@@ -2,6 +2,8 @@ var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 var pg = require('pg');
+// var imdb = require('imdb-api');
+var movie;
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,13 +15,21 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index')
-  // var result = '';
-  // var times = process.env.TIMES || 5;
-  // for (i=0; i < times; i++) {
-  //   result += cool();
-  //   response.send(result);
-  // }
+  var result = '';
+  var times = process.env.TIMES;
+  for (i=0; i < times; i++) {
+    result += cool();
+    response.send(result);
+  }
 });
+
+// app.get('/movie', function(request, response){
+//   imdb.getReq({name: 'The Toxic Avenger'}, function(err, things){
+//     movie = things;
+//   });
+//   response.send(imdb());
+// });
+
 
 app.get('/cool', function(request, response) {
   response.send(cool());
