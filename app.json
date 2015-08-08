@@ -1,6 +1,6 @@
 {
-  "name": "Node.js Getting Started",
-  "description": "A barebones Node.js app using Express 4",
+  "name": "Re-Lease Me Mileage Calculator",
+  "description": "A mileage calculator to determine whether a user is on target to meet the terms of their auto lease",
   "repository": "https://github.com/heroku/node-js-getting-started",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"]
