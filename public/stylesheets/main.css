@@ -24,4 +24,6 @@
     border: 2px solid #E0E0E0; }
     .jumbotron .lang-logo img {
       max-width: 100%; }
-
+.carousel-inner>.active {
+  height: 200px;
+}
