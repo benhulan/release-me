@@ -2,6 +2,6 @@
   "name": "Re-Lease Me Mileage Calculator",
   "description": "A mileage calculator to determine whether a user is on target to meet the terms of their auto lease",
   "repository": "https://github.com/heroku/node-js-getting-started",
-  "logo": "public/releaseme_logo3.svg",
+  "logo": "public/releaseme_logo3_no_outline.svg",
   "keywords": ["node", "express", "static"]
 }
