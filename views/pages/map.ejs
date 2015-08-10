@@ -16,7 +16,7 @@
 		function initialize() {
 			var mapOptions = {
 				center: new google.maps.LatLng(37.7908821,-122.401552),
-				zoom: 8
+				zoom: 15
 			};
 			
 			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -28,7 +28,6 @@
 				alert('The browser does not support geolocation');
 			}
 		 
-			
 			var infowindow = new google.maps.InfoWindow();
 		  
 		}
