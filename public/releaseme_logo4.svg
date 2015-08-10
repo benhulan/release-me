@@ -2,14 +2,14 @@
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="60 187.5 492 492" enable-background="new 60 187.5 492 492" xml:space="preserve">
-<path fill="#7F7F7F" d="M304.9,597c0,0-152.1,4.4-150.9-31.1c-0.9-36,321.6-19.3,376.7-62.2c19.4-15.1,17.7-39.9,17.7-39.9
-	C546.7,449,531,433,509.5,433l-449.1,0l1.2,24l425.3,0.3c26.1,0,31.5,8.8,28.2,22.7c-10.4,43.3-405.1,13-404.5,86.5
-	c0.1,69.6,194.3,67.3,194.3,67.3V597z"/>
-<path fill="#69BC45" d="M449.5,399.6c0,79.5-144,233.6-144,233.6s-144-154.2-144-233.6s64.5-144,144-144S449.5,319.9,449.5,399.6z"
-	/>
-<path display="none" fill="none" stroke="#7F7F7F" stroke-miterlimit="10" d="M551.5,433.5C551.5,569.1,438.9,679,306,679
-	C170.4,679,60.5,569.1,60.5,433.5S170.4,188,306,188S551.5,297.9,551.5,433.5z"/>
-<circle fill="#FFFFFF" cx="306" cy="397.5" r="76.8"/>
-<text transform="matrix(1 0 0 1 248.5337 453.9052)" fill="#69BC45" font-family="'PrestigeEliteStd-Bd'" font-size="189.8902">$</text>
+	 viewBox="60.1 277.6 611.8 611.8" enable-background="new 60.1 277.6 611.8 611.8" xml:space="preserve">
+<path fill="#E0E0E0" d="M364.6,764.9c0,0-126.2,8.5-124.7-35.7c-1.1-44.8,338,1,406.6-52.4c25.5-20.8,22.4-58.6,22.4-58.6
+	c-2.1-18.4-24-35.3-50.7-35.3H60.5l1.5,29.9l537,0.4c32.5,0,39.2,7.9,35.1,25.2C610,719,154,638,148.9,729.9
+	c0.1,86.6,215.7,102.7,215.7,102.7v-45.8L364.6,764.9z"/>
+<path fill="#69BC45" d="M544.5,541.3c0,98.9-179.1,290.6-179.1,290.6S186.3,640.1,186.3,541.3s80.2-179.1,179.1-179.1
+	S544.5,442.2,544.5,541.3z"/>
+<path display="none" fill="none" stroke="#E0E0E0" stroke-miterlimit="10" d="M671.4,583.5c0,168.7-140.1,305.4-305.4,305.4
+	c-168.7,0-305.4-136.7-305.4-305.4S197.3,278.1,366,278.1S671.4,414.8,671.4,583.5z"/>
+<circle fill="#E0E0E0" cx="366" cy="538.7" r="95.5"/>
+<text transform="matrix(1 0 0 1 294.5181 608.8819)" fill="#69BC45" font-family="'PrestigeEliteStd-Bd'" font-size="236.2049">$</text>
 </svg>
