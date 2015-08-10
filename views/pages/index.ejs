@@ -132,23 +132,24 @@
 
 /* Replace with database code after determining data structure */
   $('#submitButton').on('click', function(){
+    message = "<p>Something went wrong with your form entry. Can you try again?</p>"
     if(currentMiles != undefined){
       localStorage.setItem('currentMiles', currentMiles);
+      localStorage.setItem('message', '');
     } else {
-      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
       localStorage.setItem('message', message);
       $("#answer").html(message);    }
     if (targetMiles != undefined){
       localStorage.setItem('targetMiles', targetMiles);
+      localStorage.setItem('message','');
     } else {
-      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
       localStorage.setItem('message', message);
       $("#answer").html(message);
     }
     if (averageDailyMiles != undefined){
       localStorage.setItem('averageDailyMiles', averageDailyMiles);
+      localStorage.setItem('message', '');
     } else {
-      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
       localStorage.setItem('message', message);
       $("#answer").html(message);    }
   });
@@ -158,7 +159,7 @@
       if (localStorage.daysLeft) {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
       }
-      if(localStorage.message) {
+      if(localStorage.message != "") {
          $("#answer").html(message); 
       }
       if (localStorage.averageDailyMiles) {        
