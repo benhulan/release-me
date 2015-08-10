@@ -42,7 +42,10 @@ ul {
 .navbar-brand {
     height: 50px;
     padding: 0px 15px; 
-    width:50px; }
+    width:50px; 
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
 /*.navbar-nav {
     float: right; margin: 0;} */
 .nav>li>a{
