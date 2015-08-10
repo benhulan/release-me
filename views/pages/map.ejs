@@ -9,15 +9,13 @@
   <% include ../partials/nav.ejs %>
 
     <div id="map-canvas" style="margin: 0 auto;"></div>
-    <script type="text/javascript"
-		src="https://maps.googleapis.com/maps/api/js?sensor=TRUE">
-    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=TRUE"></script>
     <script type="text/javascript">
 		var map;
 
 		function initialize() {
 			var mapOptions = {
-				center: new google.maps.LatLng(0,0),
+				center: new google.maps.LatLng(37.7908821,-122.401552),
 				zoom: 8
 			};
 			
