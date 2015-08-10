@@ -131,29 +131,36 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
 /* Replace with database code after determining data structure */
   $('#submitButton').on('click', function(){
+    var message;
     if(currentMiles != undefined){
       localStorage.setItem('currentMiles', currentMiles);
     } else {
-      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");
-    }
+      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
+      localStorage.setItem('message', message);
+      $("#answer").html(message);    }
     if (targetMiles != undefined){
       localStorage.setItem('targetMiles', targetMiles);
     } else {
-      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");
+      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
+      localStorage.setItem('message', message);
+      $("#answer").html(message);
     }
     if (averageDailyMiles != undefined){
       localStorage.setItem('averageDailyMiles', averageDailyMiles);
     } else {
-      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");      
-    }
+      message = "<p>Something went wrong with your form entry. Can you try again?</p>"
+      localStorage.setItem('message', message);
+      $("#answer").html(message);    }
   });
 
   $(document).ready(function() {
       $('#nav_index').addClass("active");
-    if (localStorage.daysLeft) {
+      if (localStorage.daysLeft) {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
       };
-      if(localStorage.averageDailyMiles) {
+      if(localStorage.message) {
+         $("#answer").html(message); 
+      } else {        
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       }
   });
