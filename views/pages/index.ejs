@@ -66,7 +66,7 @@
       </ul>
     </div>
   </div> <!-- row -->
-<!-- Modal -->
+<!-- TripPlanner Modal -->
 <div class="modal fade" id="tripPlanner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -83,14 +83,40 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
 </div>
 </div>
+<!-- End tripPlanner Modal -->
 
-
+<!-- Spending Log Modal -->
+<div class="modal fade" id="spendingLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Spending Log</h4>
+      </div>
+      <div class="modal-body">
+        <h2>This feature is under development</h2>
+        <p><em>Are you our target user? What feature would you like to see here?</em></p>
+      <div class="checkbox">
+            <label><input type="checkbox" name="optA"> OPTION A: Track cost of lease. Could this be tied to interest rates API and ask user to enter credit score?</label>
+            <label><input type="checkbox" name="optB"> OPTION B: Track only monthly spending on lease.</label>
+            <label><input type="checkbox" name="optC"> OPTION C: Track fuel economy / gas log. Seems less relevant.</label>
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="prefs">Submit preferences</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End spendingLog Modal -->
 
 
 
