@@ -8,28 +8,15 @@
 <body>
   <% include ../partials/nav.ejs %>
   <div id="panel">
-    <form>
-      <div class="form-group">
-        <label for="startingPoint">Starting Point</label>
-        <input type="start" class="form-control" id="startingPoint" placeholder="Enter starting point (or use current location shown below)">
-      </div>
-      <div class="form-group">
-        <label for="endingPoint">Ending Point</label>
-        <input type="end" class="form-control" id="endingPoint" placeholder="Ending Point">
-      </div>
-      
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Round Trip
-        </label>
-      </div>
-      <button class="btn btn-default" onclick="calcRoute();">Calculate</button>
-    </form>
+    <input id="start-input" class="controls" type="text" placeholder="Enter Starting Point or Use Current Location Shown Below">
+    <input id="end-input" class="controls" type="text" placeholder="Enter Ending Point">
+    <button id="go" onclick="calcRoute();">Go</button>
+    <div id="commuterResult"></div>
   </div>
 
   <div id="map-canvas" style="margin: 0 auto;"></div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
   <script type="text/javascript">
     var directionsDisplay;
@@ -48,6 +35,10 @@
       };
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+  var startInput = /** @type {HTMLInputElement} */(
+      document.getElementById('start-input'));
+  var endInput = /** @type {HTMLInputElement} */(
+      document.getElementById('end-input'));
 
      directionsDisplay.setMap(map);
 
@@ -76,9 +67,9 @@
           if (document.getElementById('startingPoint').value != ""){
           var start = pos;
           } else {
-          var start = document.getElementById('startingPoint').value;
+          var start = startInput.value;
           }
-          var end = document.getElementById('endingPoint').value;
+          var end = endInput.value;
           var request = {
             origin:start,
             destination:end,
@@ -87,6 +78,7 @@
           directionsService.route(request, function(request, status) {
             if (status == google.maps.DirectionsStatus.OK) {
               directionsDisplay.setDirections(request);
+              document.getElementById('commuterResult').innerHTML = "<h2>Success!</h2>";
             } else {
               console.log('something went wrong');
             }
