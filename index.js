@@ -15,32 +15,24 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index')
-  // var result = '';
-  // var times = process.env.TIMES;
-  // for (i=0; i < times; i++) {
-  //   result += cool();
-  //   response.send(result);
-  // }
 });
-
-// app.get('/movie', function(request, response){
-//   imdb.getReq({name: 'The Toxic Avenger'}, function(err, things){
-//     movie = things;
-//   });
-//   response.send(imdb());
-// });
 
 app.get('/map', function(request, response){
   response.render('pages/map')
+});
+
+app.get('/trips', function(request, response){
+  response.render('pages/trips')
+});
+
+app.get('/spending', function(request, response){
+  response.render('pages/spending')
 });
 
 app.get('/index', function(request, response){
   response.render('pages/index')
 });
 
-// app.get('/cool', function(request, response) {
-//   response.send(cool());
-// });
 
 // var conString = "postgres://username:password@localhost/database";
 // var client = new pg.Client(conString);
