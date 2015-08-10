@@ -41,6 +41,8 @@ ul {
     margin-left: -40px;}
 .navbar-nav {
     float: right; margin: 0;}
+  .navbar-toggle{
+    margin-right: 30px; }
     #map-canvas { height: 500px; width:75%; }
     #panel { margin: auto; padding: 1em 0; width:75%; }
 /*    .controls {
