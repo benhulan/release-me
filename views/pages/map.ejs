@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <% include ../partials/header.ejs %>
-</head>
-
-<body>
-  <% include ../partials/nav.ejs %>
 
     <div id="map-canvas" style="margin: 0 auto;"></div>
     <script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?sensor=TRUE">
     </script>
+
     <script type="text/javascript">
 		var map;
 
 		function initialize() {
 			var mapOptions = {
-				center: new google.maps.LatLng(0,0),
+				center: new google.maps.LatLng(37.7833,122.4167),
 				zoom: 8
 			};
 			
