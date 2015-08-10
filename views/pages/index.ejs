@@ -144,7 +144,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   $(document).ready(function() {
       $('#nav_index').addClass("active");
       if (localStorage.averageDailyMiles) {
-        $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>"
+        $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
         $("#answer").html("<p>You need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       }
   });
