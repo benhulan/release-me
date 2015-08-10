@@ -8,8 +8,10 @@
 <body>
   <% include ../partials/nav.ejs %>
   <div id="panel">
-    <input id="start-input" class="controls" type="text" placeholder="Enter Starting Point or Use Current Location Shown Below">
-    <input id="end-input" class="controls" type="text" placeholder="Enter Ending Point">
+  <p>If you share your current location, it will serve as the default Starting Point. You may override this feature by editing in the first search box below.</p>
+  <p>Enter the location where you typically park on your daily commute in the Ending Point search box below to display commuter mileage, directions and map.</p>
+    <input id="start-input" class="controls" type="text" placeholder="Starting Point">
+    <input id="end-input" class="controls" type="text" placeholder="Ending Point">
     <button class="btn btn-default" id="go" onclick="calcRoute();">Go</button>
     <div id="commuterResult"></div>
   </div>
