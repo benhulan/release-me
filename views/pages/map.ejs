@@ -49,11 +49,6 @@
 			</form>
 			-->
 			<div id="message">
-				<% if (message.length > 0) { %>
-					<div class="alert alert-danger">
-						<%= message %>
-					</div>
-				<% } %>
 			</div>
 			<form action="/add-event" method="post">
 				<div class="form-group">
@@ -140,7 +135,7 @@
     </style>
     <div id="map-canvas" style="margin: 0 auto;"></div>
     <script type="text/javascript"
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAElbKleGQ_ucrGrHsRNJiR2SMGtDGsV2U&sensor=TRUE">
+		src="https://maps.googleapis.com/maps/api/js?sensor=TRUE">
     </script>
     <script type="text/javascript">
 		var map;
