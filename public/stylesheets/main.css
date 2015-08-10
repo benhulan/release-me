@@ -53,6 +53,8 @@ ul {
   margin-right: 30px; }
 #map-canvas { height: 500px; width:90%; }
 #panel { margin: auto; padding: 1em 0; width:90%; }
+#start-input, #end-input {
+  width:100%; text-overflow: ellipsis; }
 /*    .controls {
   margin-top: 16px;
   border: 1px solid transparent;
