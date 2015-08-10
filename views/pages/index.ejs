@@ -88,7 +88,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var daysLeft = function() {
     var a = $( "#leaseDate" ).datepicker('getDate').getTime();
     var tempDate = new Date(a);
-    localStorage.setItem('endDate', tempDate);
+    localStorage.setItem('endDate', tempDate.toDateString());
     var b = today.getTime();
     var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
     diffDays = Math.round((a - b)/c);
