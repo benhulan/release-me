@@ -9,16 +9,27 @@
   <% include ../partials/nav.ejs %>
 
      <div id="panel">
-          <b>End: </b>
-          <select id="end" onchange="calcRoute();">
-            <option value="coit tower, san francisco, ca">Coit Tower</option>
-            <option value="transamerica building, san francisco, ca">TransAmerica Building</option>
-            <option value="180 New Montgomery, San Francisco, CA 94105">180 NM</option>  
-            <option value="Golden Gate Park, San Francisco">Golden Gate Park</option>
-            <option value="1 Ferry Plaza, San Francisco, CA">Ferry Building</option>
-            <option value="AT&T Park, San Francisco">Giants Stadium</option>
-          </select>
-      </div>
+
+
+<form>
+  <div class="form-group">
+    <label for="startingPoint">Starting Point</label>
+    <input type="start" class="form-control" id="startingPoint" placeholder="Enter starting point">
+  </div>
+  <div class="form-group">
+    <label for="endingPoint">Ending Point</label>
+    <input type="end" class="form-control" id="endingPoint" placeholder="Ending Point">
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Round Trip
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" id="done" onclick="calcRoute();">Calculate</button>
+</form>
+
+    </div>
 
     <div id="map-canvas" style="margin: 0 auto;"></div>
 
@@ -71,7 +82,7 @@
             var request = {
               origin:pos,
               destination:end,
-              travelMode: google.maps.TravelMode.WALKING
+              travelMode: google.maps.TravelMode.DRIVING
             };
             directionsService.route(request, function(request, status) {
               if (status == google.maps.DirectionsStatus.OK) {
