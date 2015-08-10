@@ -43,6 +43,8 @@ ul {
     display: none;
     height: 50px;
     padding: 0px 15px; }
+.navbar-brand>img{
+  width:50px; }
 .navbar-nav {
     float: right; margin: 0;}
   .navbar-toggle{
