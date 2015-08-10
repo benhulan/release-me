@@ -30,6 +30,9 @@ app.get('/', function(request, response) {
 //   response.send(imdb());
 // });
 
+app.get('/map', function(request, response){
+  response.render('pages/map')
+});
 
 app.get('/cool', function(request, response) {
   response.send(cool());
