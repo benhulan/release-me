@@ -30,8 +30,3 @@
     background-image: -o-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
     background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,0)),to(rgba(0,0,0,0)));
     background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%); }
-.carousel-inner > .item {
-    transition: 2.0s ease-in-out left;
-    -webkit-transition: 2.0s ease-in-out left;
-    -moz-transition: 2.0s ease-in-out left;
-    -o-transition: 2.0s ease-in-out left; }
