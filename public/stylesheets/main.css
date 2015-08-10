@@ -11,7 +11,7 @@ ul {
       background: #7646c1; }
   .jumbotron p {
     color: #d9ccee;
-    max-width: 75%;
+    max-width: 95%;
     margin: 1em auto 2em; }
   .navbar + .jumbotron {
     margin-top: -20px; }
@@ -40,7 +40,7 @@ ul {
 .carousel-control .glyphicon-chevron-left{
     margin-left: -40px;}
 .navbar-nav {
-    margin: 0;}
+    float: right; margin: 0;}
     #map-canvas { height: 500px; width:75%; }
     #panel { margin: auto; padding: 1em 0; width:75%; }
 /*    .controls {
