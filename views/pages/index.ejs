@@ -78,7 +78,7 @@
 
 
 <script type="text/javascript">
-var currentMiles, targetMiles, remainingMiles;
+var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var today = new Date();
   var diffDays;
   var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
@@ -86,7 +86,7 @@ var currentMiles, targetMiles, remainingMiles;
   var curr_date = today.getDate();
   var curr_month = today.getMonth();
   var curr_year = today.getFullYear();
-  $("#todayDate").html(m_names[curr_month] + ". " + curr_date + ", " + curr_year);
+  $("#todayDate").html("<p>Today is " + m_names[curr_month] + ". " + curr_date + ", " + curr_year + "</p>");
 
   $("#leaseDate").datepicker();
   var resultString = "";
@@ -97,9 +97,9 @@ var currentMiles, targetMiles, remainingMiles;
     var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
     diffDays = Math.round((a - b)/c);
     if (diffDays < 0 ) {
-      resultString = "Please pick a date in the future.";
+      resultString = "<p>Please pick a date in the future.</p>";
     } else {
-      resultString = ("You have " + diffDays + " days left on your lease.");
+      resultString = ("<p>You have " + diffDays + " days left on your lease.</p>");
     } return diffDays;
   };
 
@@ -107,14 +107,15 @@ var currentMiles, targetMiles, remainingMiles;
     daysLeft();
     $("#result").html(resultString);
   });
-/* THE OLD WAY - SHOW RESULTS ON CHANGE  */
 
+/* Show results on change of either field, in case the user does them out of order */
   $("#currentMiles").on("change", function(){
     currentMiles = $("#currentMiles").val();
     if (targetMiles) { 
       targetMiles = $("#targetMiles").val();
       remainingMiles = (targetMiles - currentMiles);
-      $("#answer").html("You need to drive less than  " + Math.round(remainingMiles/daysLeft())+ " miles per day.");
+      averageDailyMiles = Math.round(remainingMiles/daysLeft());
+      $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
     } else { 
       return;
     }
@@ -125,16 +126,28 @@ var currentMiles, targetMiles, remainingMiles;
     if (currentMiles) { 
       currentMiles = $("#currentMiles").val();
       remainingMiles = (targetMiles - currentMiles);
-      $("#answer").html("You need to drive less than  " + Math.round(remainingMiles/daysLeft()) + " miles per day.");
+      averageDailyMiles = Math.round(remainingMiles/daysLeft());
+      $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
     } else { 
       return;
     }
   });
 
-  <script type="text/javascript">
-      $(document).ready(function() {
-          $('#nav_index').addClass("active");
-      });
+/* Replace with database code after determining data structure */
+  $('#submitButton').on('click', function(){
+    localStorage.setItem('currentMiles', currentMiles);
+    localStorage.setItem('remainingMiles', targetMiles);
+    localStorage.setItem('daysLeft', diffDays);
+    localStorage.setItem('averageDailyMiles', averageDailyMiles);
+  });
+
+  $(document).ready(function() {
+      $('#nav_index').addClass("active");
+      if (localStorage.averageDailyMiles) {
+        $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>"
+        $("#answer").html("<p>You need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
+      }
+  });
   </script>
 
 </script>
