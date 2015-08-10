@@ -82,3 +82,8 @@ ul {
         font-size: 13px;
         font-weight: 300;
       }*/
+      @media (max-width: 768px) {
+        .lang-logo {
+          display:none;
+        }
+      }
