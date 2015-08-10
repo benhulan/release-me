@@ -25,16 +25,11 @@
       <h3><span class="glyphicon glyphicon-dashboard"></span> Calculate your mileage:</h3>
         <form>
           <div class="form-group">
-            <label for="leaseDate">Enter the 
-
-<!-- <label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Start Date</label>
-<label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">--> End Date<!--</label> -->
-
-             of your lease:</label>
+            <label for="leaseDate">Enter the End Date of your lease:</label>
             <input type="leaseDate" class="form-control" id="leaseDate" placeholder="08/01/2018">
           </div>
 
- <!--          <div class="checkbox">
+    <!-- <div class="checkbox">
             <label>
               <input type="checkbox"> 3 Year Lease (36 Month)
             </label>
@@ -61,7 +56,7 @@
     </div>
     <div class="col-md-6">
 
-      <h3><span class="glyphicon glyphicon-list-alt"></span>Results:</h3>
+      <h3><span class="glyphicon glyphicon-list-alt"></span> Results:</h3>
 
        <div class="alert alert-info text-center" role="alert">
         <div id="todayDate"></div>
@@ -136,9 +131,21 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
 /* Replace with database code after determining data structure */
   $('#submitButton').on('click', function(){
-    localStorage.setItem('currentMiles', currentMiles);
-    localStorage.setItem('targetMiles', targetMiles);
-    localStorage.setItem('averageDailyMiles', averageDailyMiles);
+    if(currentMiles != undefined){
+      localStorage.setItem('currentMiles', currentMiles);
+    } else {
+      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");
+    }
+    if (targetMiles != undefined){
+      localStorage.setItem('targetMiles', targetMiles);
+    } else {
+      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");
+    }
+    if (averageDailyMiles != undefined){
+      localStorage.setItem('averageDailyMiles', averageDailyMiles);
+    } else {
+      $("#answer").html("<p>Something went wrong with your form entry. Can you try again?</p>");      
+    }
   });
 
   $(document).ready(function() {
