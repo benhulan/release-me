@@ -159,10 +159,9 @@
       if (localStorage.daysLeft) {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
       }
-      if(localStorage.message != "") {
+      if(localStorage.message == "<p>Something went wrong with your form entry. Can you try again?</p>") {
          $("#answer").html(message); 
-      }
-      if (localStorage.averageDailyMiles) {        
+      } else if (localStorage.averageDailyMiles) {        
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       }
   });
