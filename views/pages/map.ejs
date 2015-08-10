@@ -70,10 +70,10 @@
     };
 
     var calcRoute = function() {
-          if (startInput != ""){
-          var start = startInput.value;
-          } else {
+          if (startInput == ""){
           var start = pos;
+          } else {
+          var start = startInput.value;
           }
           var end = endInput.value;
           var request = {
