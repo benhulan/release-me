@@ -82,6 +82,11 @@ ul {
         font-size: 13px;
         font-weight: 300;
       }*/
+      @media (min-width: 768px) {
+        .jumbotron {
+          padding: 30px 0;
+        }
+      }
       @media (max-width: 768px) {
         .jumbotron .lang-logo {
           display:none;
