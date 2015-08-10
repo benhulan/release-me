@@ -73,7 +73,8 @@
 
 
 <script type="text/javascript">
-var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
+  var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
+  var message;
   var today = new Date();
   var diffDays;
   var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
@@ -131,7 +132,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
 /* Replace with database code after determining data structure */
   $('#submitButton').on('click', function(){
-    var message;
     if(currentMiles != undefined){
       localStorage.setItem('currentMiles', currentMiles);
     } else {
@@ -157,10 +157,11 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       $('#nav_index').addClass("active");
       if (localStorage.daysLeft) {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
-      };
+      }
       if(localStorage.message) {
          $("#answer").html(message); 
-      } else {        
+      }
+      if (localStorage.averageDailyMiles) {        
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       }
   });
