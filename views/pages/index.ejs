@@ -143,12 +143,12 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
   $(document).ready(function() {
       $('#nav_index').addClass("active");
-      if (localStorage.daysLeft == "undefined") {
+      if (localStorage.daysLeft == undefined) {
         $("#result").html("<p>Something's wrong. Can you re-enter the end date of your lease?</p>"); 
       } else {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
       };
-      if(localStorage.averageDailyMiles == 0){
+      if(localStorage.averageDailyMiles == undefined){
         $("#answer").html("<p>We've encountered a problem. Please re-enter the current mileage and target mileage of your lease?</p>");
       } else {
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
