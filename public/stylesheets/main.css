@@ -36,6 +36,10 @@ ul {
     background-image: -o-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
     background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,0)),to(rgba(0,0,0,0)));
     background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%); }
+.carousel-control .glyphicon-chevron-right{
+    margin-right: -40px;}
+.carousel-control .glyphicon-chevron-left{
+    margin-left: -40px;}
     #map-canvas { height: 500px; width:75%; }
     #panel { margin: auto; padding: 1em 0; width:75%; }
 /*    .controls {
