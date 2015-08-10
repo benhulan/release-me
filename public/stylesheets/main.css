@@ -83,7 +83,7 @@ ul {
         font-weight: 300;
       }*/
       @media (max-width: 768px) {
-        .lang-logo {
+        .jumbotron .lang-logo {
           display:none;
         }
       }
