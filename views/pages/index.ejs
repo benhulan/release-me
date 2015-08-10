@@ -19,14 +19,14 @@
           <div class="form-group">
             <label for="leaseDate">Enter the 
 
-<label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Start Date</label>
-<label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> End Date</label>
+<!-- <label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Start Date</label>
+<label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">--> End Date<!--</label> -->
 
              of your lease:</label>
             <input type="leaseDate" class="form-control" id="leaseDate" placeholder="08/01/2018">
           </div>
 
-          <div class="checkbox">
+ <!--          <div class="checkbox">
             <label>
               <input type="checkbox"> 3 Year Lease (36 Month)
             </label>
@@ -36,7 +36,7 @@
             <label>
               <input type="checkbox"> 5 Year Lease (60 Month)
             </label>
-          </div>
+          </div> -->
 
           <div class="form-group">
             <label for="currentMiles">Enter the current mileage of your leased vehicle:</label>
@@ -67,7 +67,76 @@
   </div> <!-- row -->
 
 </div>
+<script type="text/javascript">
+var currentMiles, targetMiles, remainingMiles;
+  var today = new Date();
+  var diffDays;
+  var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
 
+  var curr_date = today.getDate();
+  var curr_month = today.getMonth();
+  var curr_year = today.getFullYear();
+  $("#todayDate").html(m_names[curr_month] + ". " + curr_date + ", " + curr_year);
+
+  $("#datepicker").datepicker();
+  var resultString = "";
+
+  var daysLeft = function() {
+    var a = $( "#datepicker" ).datepicker('getDate').getTime();
+    var b = today.getTime();
+    var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
+    diffDays = Math.round((a - b)/c);
+    if (diffDays < 0 ) {
+      resultString = "Please pick a date in the future.";
+    } else {
+      resultString = ("You have " + diffDays + " days left on your lease.");
+    } return diffDays;
+  };
+
+  $("#datepicker").on("change", function(){
+    daysLeft();
+    $("#result").html(resultString);
+  });
+/* THE OLD WAY - SHOW RESULTS ON CHANGE  */
+
+  $("#currentMiles").on("change", function(){
+    currentMiles = $("#currentMiles").val();
+    if (targetMiles) { 
+      targetMiles = $("#targetMiles").val();
+      remainingMiles = (targetMiles - currentMiles);
+      $("#answer").html("You need to drive less than  " + Math.round(remainingMiles/daysLeft())+ " miles per day.");
+    } else { 
+      return;
+    }
+  });
+
+  $("#targetMiles").on("change", function(){
+    targetMiles = $("#targetMiles").val();
+    if (currentMiles) { 
+      currentMiles = $("#currentMiles").val();
+      remainingMiles = (targetMiles - currentMiles);
+      $("#answer").html("You need to drive less than  " + Math.round(remainingMiles/daysLeft()) + " miles per day.");
+    } else { 
+      return;
+    }
+  });
+
+
+   $(function() {
+      $( "#interactive" ).accordion();
+    });
+
+  $("button").click(function(){
+    $("#result").addClass("showResult");
+    $("#answer").addClass("showAnswer");
+  });
+
+
+
+
+$('#leaseDate').datepicker();
+
+</script>
 
 </body>
 </html>
