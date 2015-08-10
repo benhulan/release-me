@@ -41,6 +41,7 @@
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
      directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById('commuterResult'));
 
       navigator.geolocation.getCurrentPosition(function(position) {
             pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -75,10 +76,9 @@
             destination:end,
             travelMode: google.maps.TravelMode.DRIVING
           };
-          directionsService.route(request, function(request, status) {
+          directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-              directionsDisplay.setDirections(request);
-              document.getElementById('commuterResult').innerHTML = "<h2>Success!</h2>";
+              directionsDisplay.setDirections(response);
             } else {
               console.log('something went wrong');
             }
