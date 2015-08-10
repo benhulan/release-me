@@ -8,111 +8,86 @@
 <body>
   <% include ../partials/nav.ejs %>
 
+     <div id="panel">
+          <b>End: </b>
+          <select id="end" onchange="calcRoute();">
+            <option value="coit tower, san francisco, ca">Coit Tower</option>
+            <option value="transamerica building, san francisco, ca">TransAmerica Building</option>
+            <option value="180 New Montgomery, San Francisco, CA 94105">180 NM</option>  
+            <option value="Golden Gate Park, San Francisco">Golden Gate Park</option>
+            <option value="1 Ferry Plaza, San Francisco, CA">Ferry Building</option>
+            <option value="AT&T Park, San Francisco">Giants Stadium</option>
+          </select>
+      </div>
+
     <div id="map-canvas" style="margin: 0 auto;"></div>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=TRUE"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+
     <script type="text/javascript">
-		var map;
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
+      var pos = {};
 
-		function initialize() {
-			var mapOptions = {
-				center: new google.maps.LatLng(37.7908821,-122.401552),
-				zoom: 15
-			};
-			
-			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-		  
-			if(navigator.geolocation) {
-				console.log('navigator.geolocation');
-				navigator.geolocation.getCurrentPosition(currentPositionCallback, errorCallback,{enableHighAccuracy: true});
-			} else {
-				alert('The browser does not support geolocation');
-			}
-		 
-			var infowindow = new google.maps.InfoWindow();
-		  
-		}
-      
+      var newLocation = new google.maps.LatLng(37.7908821,-122.401552);
 
-		function errorCallback(error) {
-			alert('code: ' + error.code + '\n' + 'message: ' + error.message);
-		}
-		
-		function currentPositionCallback(position) {
-			console.log('getting current position');
-			var user_lat_long = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      function initialize() {
+        directionsDisplay = new google.maps.DirectionsRenderer();
 
-			document.getElementById('latitude').value = position.coords.latitude;
-			document.getElementById('longitude').value = position.coords.longitude;
-			document.getElementById('latitudea').value = position.coords.latitude;
-			document.getElementById('longitudea').value = position.coords.longitude;
-			console.log(document.getElementById('latitude').value);
-			console.log(document.getElementById('longitude').value);
+        var mapOptions = {
+          zoom: 15,
+          center: newLocation
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-			/*
-			var marker = new google.maps.Marker({
-				position: user_lat_long,
-				map: map
-			});
-			*/
 
-			map.setCenter(user_lat_long);
-			map.setZoom(15);
-		}
+       directionsDisplay.setMap(map);
 
-		google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+              pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+              // add marker here
 
-	<script>
-      $(function () {
+              var youAreHere = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: "You are Here."
+              });
 
-      var $searchBox = $("#search");
-      $searchBox.autocomplete({
-          source: function (request, response) {
-             $.ajax({
-                url: "/search_user",
-                type: "GET",
-                data: request,  // request is the value of search input
-                success: function (data) {
-                  // Map response values to fiedl label and value
-                   response($.map(data, function (el) {
-                       console.log(el);
-                      return {
-                         label: el.local.name,
-                         value: el.local.email
-                      };
-                      }));
-                   }
-                });
-             },
-             
-             // The minimum number of characters a user must type before a search is performed.
-             minLength: 3, 
-             
-             // set an onFocus event to show the result on input field when result is focused
-             focus: function (event, ui) { 
-                this.value = ui.item.label; 
-                // Prevent other event from not being execute
-                event.preventDefault();
-             },
-             select: function (event, ui) {
-                // Prevent value from being put in the input:
-                this.value = ui.item.label;
-                // Set the id to the next input hidden field
-                // $(this).next("input").val(ui.item.value);
-                // Prevent other event from not being execute            
-                event.preventDefault();
-                // optionnal: submit the form after field has been filled up
-             }
-      });
+              map.setCenter(pos);
 
-        });
+          // calcRoute();
 
+          
+          }, function() {
+            handleNoGeolocation(true);
+          });
+
+      };
+
+      var calcRoute = function() {
+            var start = pos;
+            var end = document.getElementById('end').value;
+            var request = {
+              origin:pos,
+              destination:end,
+              travelMode: google.maps.TravelMode.WALKING
+            };
+            directionsService.route(request, function(request, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(request);
+              }
+            });
+          };
+
+
+      google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
 		
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#map').addClass("active");
+            $('#nav_map').addClass("active");
         });
     </script>
     <!-- Bootstrap core JavaScript
