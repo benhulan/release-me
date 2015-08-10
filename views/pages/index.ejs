@@ -73,8 +73,7 @@
 
 
 <script type="text/javascript">
-  var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
-  var message;
+var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var today = new Date();
   var diffDays;
   var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
@@ -132,36 +131,17 @@
 
 /* Replace with database code after determining data structure */
   $('#submitButton').on('click', function(){
-    message = "<p>Something went wrong with your form entry. Can you try again?</p>"
-    if(currentMiles != undefined){
-      localStorage.setItem('currentMiles', currentMiles);
-      localStorage.setItem('message', '');
-    } else {
-      localStorage.setItem('message', message);
-      $("#answer").html(message);    }
-    if (targetMiles != undefined){
-      localStorage.setItem('targetMiles', targetMiles);
-      localStorage.setItem('message','');
-    } else {
-      localStorage.setItem('message', message);
-      $("#answer").html(message);
-    }
-    if (averageDailyMiles != undefined){
-      localStorage.setItem('averageDailyMiles', averageDailyMiles);
-      localStorage.setItem('message', '');
-    } else {
-      localStorage.setItem('message', message);
-      $("#answer").html(message);    }
+    localStorage.setItem('currentMiles', currentMiles);
+    localStorage.setItem('targetMiles', targetMiles);
+    localStorage.setItem('averageDailyMiles', averageDailyMiles);
   });
 
   $(document).ready(function() {
       $('#nav_index').addClass("active");
-      if (localStorage.daysLeft) {
+    if (localStorage.daysLeft) {
         $("#result").html("<p>You have " + localStorage.daysLeft + " days left on your lease.</p>");
-      }
-      if(localStorage.message == "<p>Something went wrong with your form entry. Can you try again?</p>") {
-         $("#answer").html(message); 
-      } else if (localStorage.averageDailyMiles) {        
+      };
+      if(localStorage.averageDailyMiles) {
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       }
   });
