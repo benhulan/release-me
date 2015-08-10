@@ -47,14 +47,15 @@
             <input type="targetMiles" class="form-control" id="targetMiles" placeholder="15000">
           </div>
 
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
         </form>
         <div class="padMe" style="padding-bottom: 10px;"></div>
     </div>
     <div class="col-md-6">
 
-      <div class="alert alert-info text-center" role="alert" id="results">
-          After completing the form, your results will appear here.
+      <div class="alert alert-info text-center" role="alert">
+        <div id="result">After completing the form, your results will appear here.</div>
+        <div id="answer"></div>
       </div>
 
       <h3><span class="glyphicon glyphicon-info-sign"></span> What else can <em>Re-Lease Me!</em> do?</h3>
@@ -78,11 +79,11 @@ var currentMiles, targetMiles, remainingMiles;
   var curr_year = today.getFullYear();
   $("#todayDate").html(m_names[curr_month] + ". " + curr_date + ", " + curr_year);
 
-  $("#datepicker").datepicker();
+  $("#leaseDate").datepicker();
   var resultString = "";
 
   var daysLeft = function() {
-    var a = $( "#datepicker" ).datepicker('getDate').getTime();
+    var a = $( "#leaseDate" ).datepicker('getDate').getTime();
     var b = today.getTime();
     var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
     diffDays = Math.round((a - b)/c);
@@ -93,7 +94,7 @@ var currentMiles, targetMiles, remainingMiles;
     } return diffDays;
   };
 
-  $("#datepicker").on("change", function(){
+  $("#leaseDate").on("change", function(){
     daysLeft();
     $("#result").html(resultString);
   });
@@ -120,21 +121,6 @@ var currentMiles, targetMiles, remainingMiles;
       return;
     }
   });
-
-
-   $(function() {
-      $( "#interactive" ).accordion();
-    });
-
-  $("button").click(function(){
-    $("#result").addClass("showResult");
-    $("#answer").addClass("showAnswer");
-  });
-
-
-
-
-$('#leaseDate').datepicker();
 
 </script>
 
