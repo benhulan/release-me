@@ -159,7 +159,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       };
       if(localStorage.commuteStart) {
         $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " each way.</p>")
-        var expectedCommuterMiles = localStorage.getItem(commuteDistance)*10*localStorage.getItem(daysLeft)/7);
+        var expectedCommuterMiles = localStorage.getItem(commuteDistance)*10*localStorage.getItem(daysLeft)/7;
         data.pop();
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.getItem(remainingMiles) - expectedCommuterMiles)});
