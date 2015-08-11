@@ -29,6 +29,10 @@ app.get('/spending', function(request, response){
   response.render('pages/spending')
 });
 
+app.get('/dashboard', function(request, response){
+  response.render('pages/dashboard')
+});
+
 app.get('/index', function(request, response){
   response.render('pages/index')
 });
