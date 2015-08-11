@@ -108,6 +108,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   $("#submitButton").on("click", function(){
     daysLeft();
     $("#result").html(resultString);
+    generateChart(daysData);
   });
 
   $("#currentMiles").on("change", function(){
@@ -170,7 +171,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
 
 var generateChart = function(data){
-  var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+  var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("id", data.attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
   var pie = d3.layout.pie().value(function(d){return d.value;});
 
   // declare an arc generator function
@@ -208,7 +209,6 @@ var generateChart = function(data){
           $('#nav_index').removeClass("active");
           $('#nav_dashboard').addClass("active");
           $('#generate').on('click', function(){
-            generateChart(daysData);
             generateChart(milesData);
           })
       });
