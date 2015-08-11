@@ -183,9 +183,9 @@ var generateChart = function(data){
 
   // add the text
   arcs.append("svg:text").attr("transform", function(d){
-        d.innerRadius = r/2;
+        d.innerRadius = 0;
         d.outerRadius = r;
-      return "translate(" + (r/2) + "," + (r/2) + ")";}).attr("text-anchor", "start").text( function(d, i) {
+      return "translate(" + (r/2) + "," + 0 + ")";}).attr("text-anchor", "middle").text( function(d, i) {
       return data[i].label;}
       );
 };
