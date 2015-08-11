@@ -69,7 +69,7 @@
 var w = 450;
 var h = 300;
 var r = 100;
-var ir = 45;
+// var ir = 45;
 // var textOffset = 14;
 var color = d3.scale.category20c();
 var data = [];
@@ -158,12 +158,12 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         data.push({"label": "Current Miles", "value": Number(localStorage.getItem('currentMiles'))});
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-        $("#pie-chart").append("<button id='generate' onclick='generateChart()'>Generate Chart</button>");
+        $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
       }
   });
 
 var generateChart = function(data){
-  var vis = d3.select('#pie-chart').append("svg:svg").data([data][0]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+  var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
   var pie = d3.layout.pie().value(function(d){return d.value;});
 
   // declare an arc generator function
@@ -186,7 +186,7 @@ var generateChart = function(data){
         d.innerRadius = 0;
         d.outerRadius = r;
       return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-      return data[0][i].label;}
+      return data[i].label;}
       );
 };
 
