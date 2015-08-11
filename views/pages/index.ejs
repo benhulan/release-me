@@ -62,6 +62,7 @@
         <div id="todayDate"></div>
         <div id="result"></div>
         <div id="answer"></div>
+        <div id="commute"></div>
       </div>
 <!--       <ul>
         <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Commuter Map</a></li>
@@ -140,10 +141,13 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   $(document).ready(function() {
       $('#nav_index').addClass("active");
     if (localStorage.daysLeft) {
-        $("#result").html("<p>You entered an end date of " + localStorage.endDate + " which leaves you " + localStorage.daysLeft + " days remaining on your lease.</p>");
+        $("#result").html("<p>You entered an end date of " + localStorage.endDate + "</p><p>You have " + localStorage.daysLeft + " days remaining on your lease.</p>");
       };
       if(localStorage.averageDailyMiles) {
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
+      };
+      if(localStorage.commuteStart) {
+        $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " each way.</p>")
       }
   });
   </script>
