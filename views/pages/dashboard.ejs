@@ -66,9 +66,9 @@
 
 <script type="text/javascript">
   /* D3.js vars */
-var w = 450;
-var h = 300;
-var r = 100;
+var w = 100%;
+var h = 400;
+var r = 200;
 // var ir = 45;
 // var textOffset = 14;
 var color = d3.scale.category20c();
@@ -155,9 +155,9 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
 
-        data.push({"label": "Current Miles", "value": Number(localStorage.getItem('currentMiles'))});
-        data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
-        data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
+        data.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
+        data.push({"label": "Planned", "value": expectedCommuterMiles});
+        data.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
         $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
       }
   });
@@ -185,7 +185,7 @@ var generateChart = function(data){
   arcs.append("svg:text").attr("transform", function(d){
         d.innerRadius = 0;
         d.outerRadius = r;
-      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "end").text( function(d, i) {
       return data[i].label;}
       );
 };
