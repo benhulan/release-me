@@ -136,7 +136,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('targetMiles', targetMiles);
     localStorage.setItem('remainingMiles', remainingMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
-    data.push({"label": "Current Miles", "value": currentMiles});
+    data.push({"label": "Current Miles", "value": localStorage.getItem('currentMiles')});
   });
 
   $('#startOver').on('click', function(){
