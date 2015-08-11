@@ -154,10 +154,9 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " miles each way.</p>");
 
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
-
-        data.push({"label": "Current Miles", "value": Number(localStorage.getItem('currentMiles'))});
-        data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
+        data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
+        data.push({"label": "Current Miles", "value": Number(localStorage.getItem('currentMiles'))});
         $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
       }
   });
@@ -185,7 +184,7 @@ var generateChart = function(data){
   arcs.append("svg:text").attr("transform", function(d){
         d.innerRadius = 0;
         d.outerRadius = r;
-      return "translate(" + (r/2) + "," + 0 + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+      return "translate(" + (r/2) + "," + 20 + ")";}).attr("text-anchor", "start").text( function(d, i) {
       return data[i].label;}
       );
 };
