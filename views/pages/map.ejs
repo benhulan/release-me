@@ -17,6 +17,7 @@
     <button class="btn btn-default" id="go" onclick="calcRoute();">Go</button>
     <div class="padMe" style="padding-bottom: 10px;"></div>
     <div id="commuterResult"></div>
+    <div id="note"></div>
   </div>
 
   <div id="map-canvas" style="margin: 0 auto;"></div>
@@ -87,6 +88,7 @@
             if (status == google.maps.DirectionsStatus.OK) {
               localStorage.setItem('commuteDistance', (response['routes'][0]['legs'][0]['distance']['text']));
               directionsDisplay.setDirections(response);
+              $('#note').html("<p>This information has been added to the <a href='/index'>dashboard</a>.</p>")
             } else {
               console.log('something went wrong');
             }
