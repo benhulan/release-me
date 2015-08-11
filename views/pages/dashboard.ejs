@@ -141,8 +141,8 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('remainingMiles', remainingMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
 
-    data.push({"label": "Current Miles", "value": localStorage.getItem(currentMiles)});
-    data.push({"label": "Remaining Miles", "value": localStorage.getItem(remainingMiles)});
+    data.push({"label": "Current Miles", "value": currentMiles});
+    data.push({"label": "Remaining Miles", "value": remainingMiles});
   });
 
   $('#startOver').on('click', function(){
@@ -158,11 +158,12 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       };
       if(localStorage.commuteStart) {
-        $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " each way.</p>")
-        var expectedCommuterMiles = localStorage.getItem(commuteDistance)*10*localStorage.getItem(daysLeft)/7;
-        data.pop();
+        $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " miles each way.</p>");
+
+        var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
+        data.pop(); // remove remaining miles -- assumes the map code was the second step!!!
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
-        data.push({"label": "Remaining Miles", "value": (localStorage.getItem(remainingMiles) - expectedCommuterMiles)});
+        data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
       }
   });
 
