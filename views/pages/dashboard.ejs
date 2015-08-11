@@ -142,7 +142,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
 
     data.push({"label": "Current Miles", "value": currentMiles});
-    data.push({"label": "Remaining Miles", "value": remainingMiles});
   });
 
   $('#startOver').on('click', function(){
@@ -161,7 +160,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " miles each way.</p>");
 
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
-        data.pop(); // remove remaining miles -- assumes the map code was the second step!!!
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
       }
