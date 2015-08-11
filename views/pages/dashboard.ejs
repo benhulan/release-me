@@ -10,7 +10,6 @@
 
 
 <div class="container">
-  <hr>
   <div class="row" id="dashboard">
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-dashboard"></span> Calculate your mileage:</h3>
@@ -20,17 +19,17 @@
             <input type="leaseDate" class="form-control" id="leaseDate" placeholder="08/01/2018">
           </div>
 
-    <!-- <div class="checkbox">
+          <div class="checkbox">
             <label>
-              <input type="checkbox"> 3 Year Lease (36 Month)
+              <input type="checkbox"> Assumes 3 Year Lease (for now)
             </label>
-            <label>
+             <!--<label>
               <input type="checkbox"> 4 Year Lease (48 Month)
             </label>
             <label>
               <input type="checkbox"> 5 Year Lease (60 Month)
-            </label>
-          </div> -->
+            </label>-->
+          </div> 
 
           <div class="form-group">
             <label for="currentMiles">Enter the current mileage of your leased vehicle:</label>
@@ -72,8 +71,9 @@ var r = 160;
 // var ir = 45;
 var textOffset = 14;
 var color = d3.scale.category20c();
-var data = [];
-
+var milesData = [];
+var daysData = [];
+var threeYears = 1092;
 /* custom vars */
 var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var today = new Date();
@@ -99,6 +99,9 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     } else {
       resultString = ("<p>You have " + diffDays + " days left on your lease.</p>");
       localStorage.setItem('daysLeft', diffDays);
+      daysData.push({"label": "Used", "value":diffDays});
+      daysData.push({"label": "Remaining", "value":(threeYears - diffDays)});
+      generateChart(daysData);
     } return diffDays;
   };
 
@@ -155,11 +158,11 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
 
-        data.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
-        data.push({"label": "Planned", "value": expectedCommuterMiles});
-        data.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-       // $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
-        generateChart(data);
+        milesData.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
+        milesData.push({"label": "Planned", "value": expectedCommuterMiles});
+        milesData.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
+       // $("#pie-chart").append("<button id='generate' onclick='generateChart(milesData)'>Generate Chart</button>");
+        generateChart(milesData);
       }
   });
 
