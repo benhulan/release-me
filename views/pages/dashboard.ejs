@@ -114,7 +114,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     currentMiles = $("#currentMiles").val();
     targetMiles = $("#targetMiles").val();
     remainingMiles = (targetMiles - currentMiles);
-    averageDailyMiles = Math.round(remainingMiles/localStorage.diffDays);
+    averageDailyMiles = Math.round(remainingMiles/localStorage.daysLeft);
     $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
 
     $("#result").html(resultString);
