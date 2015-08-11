@@ -153,10 +153,12 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       if(localStorage.averageDailyMiles) {
         $("#answer").html("<p>Your current mileage is " + localStorage.currentMiles + " and your lease ends at " + localStorage.targetMiles + " miles so you need to drive less than  " + localStorage.averageDailyMiles + " miles per day.</p>");
       };
-      if(localStorage.commuteStart) {
+      if(localStorage.commuteDistance) {
         $("#commute").html("<p>Your daily commute begins at " + localStorage.commuteStart + " and ends at " + localStorage.commuteEnd + " for a distance of " + localStorage.commuteDistance + " miles each way.</p>");
 
-        var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
+        // comparing expected daily miles to average daily miles
+        // distance * 2 for round trip * 5 days commuting per week * total days left / 7 days per week
+        var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7; 
 
         milesData.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
         milesData.push({"label": "Planned", "value": expectedCommuterMiles});
