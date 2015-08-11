@@ -65,20 +65,16 @@
 
 
 <script type="text/javascript">
-  /* D3.js */
-
+  /* D3.js vars */
 var w = 450;
 var h = 300;
 var r = 100;
 var ir = 45;
-var textOffset = 14;
-
+// var textOffset = 14;
 var color = d3.scale.category20c();
-
 var data = [];
 
 /* custom vars */
-
 var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var today = new Date();
   var diffDays;
@@ -140,7 +136,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('targetMiles', targetMiles);
     localStorage.setItem('remainingMiles', remainingMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
-
     data.push({"label": "Current Miles", "value": currentMiles});
   });
 
@@ -162,36 +157,39 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
+        $("#pie-chart").append("<button id='generate' onclick='generateChart()'>Generate Chart</button>");
       }
   });
 
+var generateChart = function(data){
+  var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+  var pie = d3.layout.pie().value(function(d){return d.value;});
 
-var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
-var pie = d3.layout.pie().value(function(d){return d.value;});
+  // declare an arc generator function
+  var arc = d3.svg.arc().outerRadius(r);
 
-// declare an arc generator function
-var arc = d3.svg.arc().outerRadius(r);
+  // select paths, use arc generator to draw
+  var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+  arcs.append("svg:path")
+      .attr("fill", function(d, i){
+          return color(i);
+      })
+      .attr("d", function (d) {
+          // log the result of the arc generator to show how cool it is :)
+          console.log(arc(d));
+          return arc(d);
+      });
 
-// select paths, use arc generator to draw
-var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
-arcs.append("svg:path")
-    .attr("fill", function(d, i){
-        return color(i);
-    })
-    .attr("d", function (d) {
-        // log the result of the arc generator to show how cool it is :)
-        console.log(arc(d));
-        return arc(d);
-    });
+  // add the text
+  arcs.append("svg:text").attr("transform", function(d){
+        d.innerRadius = 0;
+        d.outerRadius = r;
+      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+      return data[i].label;}
+      );
+};
 
-// add the text
-arcs.append("svg:text").attr("transform", function(d){
-      d.innerRadius = 0;
-      d.outerRadius = r;
-    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-    return data[i].label;}
-    );
-  </script>
+</script>
 
 </body>
 </html>
