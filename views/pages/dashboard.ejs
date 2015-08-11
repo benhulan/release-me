@@ -155,7 +155,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
         var expectedCommuterMiles = localStorage.commuteDistance*10*localStorage.daysLeft/7;
 
-        data.push({"label": "Current Miles", "value": localStorage.getItem('currentMiles')});
+        data.push({"label": "Current Miles", "value": Number(localStorage.getItem('currentMiles'))});
         data.push({"label": "Planned Commuter Miles", "value": expectedCommuterMiles});
         data.push({"label": "Remaining Miles", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
         $("#pie-chart").append("<button id='generate' onclick='generateChart()'>Generate Chart</button>");
