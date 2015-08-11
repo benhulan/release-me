@@ -185,7 +185,7 @@ var generateChart = function(data){
   arcs.append("svg:text").attr("transform", function(d){
         d.innerRadius = 0;
         d.outerRadius = r;
-      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "end").text( function(d, i) {
+      return "translate(" + (w/2) + "," + (h/2) + ")";}).attr("text-anchor", "start").text( function(d, i) {
       return data[i].label;}
       );
 };
