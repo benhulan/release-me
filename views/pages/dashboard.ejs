@@ -138,7 +138,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('targetMiles', targetMiles);
     localStorage.setItem('remainingMiles', remainingMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
-    generateChart(daysData);
   });
 
   $('#startOver').on('click', function(){
@@ -162,12 +161,12 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         milesData.push({"label": "Planned", "value": expectedCommuterMiles});
         milesData.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
        // $("#pie-chart").append("<button id='generate' onclick='generateChart(milesData)'>Generate Chart</button>");
-        generateChart(milesData);
+        generateChart(milesData, daysData);
       }
   });
 
-var generateChart = function(data){
-  var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+var generateChart = function(data1, data2){
+  var vis = d3.select('#pie-chart').append("svg:svg").data([data1]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
   var pie = d3.layout.pie().value(function(d){return d.value;});
 
   // declare an arc generator function
@@ -190,7 +189,32 @@ var generateChart = function(data){
         d.innerRadius = 0;
         d.outerRadius = r;
       return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "end").text( function(d, i) {
-      return data[i].label;}
+      return data1[i].label;}
+      );
+    var vis = d3.select('#pie-chart').append("svg:svg").data([data2]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+  var pie = d3.layout.pie().value(function(d){return d.value;});
+
+  // declare an arc generator function
+  var arc = d3.svg.arc().outerRadius(r);
+
+  // select paths, use arc generator to draw
+  var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+  arcs.append("svg:path")
+      .attr("fill", function(d, i){
+          return color(i);
+      })
+      .attr("d", function (d) {
+          // log the result of the arc generator to show how cool it is :)
+          console.log(arc(d));
+          return arc(d);
+      });
+
+  // add the text
+  arcs.append("svg:text").attr("transform", function(d){
+        d.innerRadius = 0;
+        d.outerRadius = r;
+      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "end").text( function(d, i) {
+      return data2[i].label;}
       );
 };
 
