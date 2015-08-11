@@ -41,6 +41,7 @@
           </div>
           <button type="button" class="btn btn-default" id="submitButton">Submit</button>
           <button type="button" class="btn btn-default" id="startOver">Start Over</button>
+        <div class="padMe" style="padding-bottom: 10px;"></div>
           <div id="placeholder"></div>
         </form>
         <div class="padMe" style="padding-bottom: 10px;"></div>
@@ -70,8 +71,12 @@ var r = 160;
 // var ir = 45;
 var textOffset = 14;
 var color = d3.scale.category20c();
+if(!localStorage.currentMiles){
 var milesData = [];
-var daysData = [];
+}
+if (!localStorage.daysLeft){
+  var daysData = [];
+}
 var threeYears = 1092;
 /* custom vars */
 var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
