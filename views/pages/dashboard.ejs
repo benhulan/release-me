@@ -101,7 +101,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       localStorage.setItem('daysLeft', diffDays);
       daysData.push({"label": "Used", "value":diffDays});
       daysData.push({"label": "Remaining", "value":(threeYears - diffDays)});
-      generateChart(daysData);
+      // generateChart(daysData);
     } return diffDays;
   };
 
@@ -163,10 +163,11 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         milesData.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
         milesData.push({"label": "Planned", "value": expectedCommuterMiles});
         milesData.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-       // $("#pie-chart").append("<button id='generate' onclick='generateChart(milesData)'>Generate Chart</button>");
-        generateChart(milesData);
+       $("#pie-chart").append("<button id='generate'>Generate Charts</button>");
+        // generateChart(milesData);
       }
   });
+
 
 var generateChart = function(data){
   var vis = d3.select('#pie-chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
@@ -206,6 +207,10 @@ var generateChart = function(data){
       $(document).ready(function() {
           $('#nav_index').removeClass("active");
           $('#nav_dashboard').addClass("active");
+          $('#generate').on('click', function(){
+            generateChart(daysData);
+            generateChart(milesData);
+          })
       });
   </script>
   <!-- Bootstrap core JavaScript
