@@ -138,6 +138,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('targetMiles', targetMiles);
     localStorage.setItem('remainingMiles', remainingMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
+    generateChart(daysData);
   });
 
   $('#startOver').on('click', function(){
@@ -161,7 +162,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         milesData.push({"label": "Planned", "value": expectedCommuterMiles});
         milesData.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
        // $("#pie-chart").append("<button id='generate' onclick='generateChart(milesData)'>Generate Chart</button>");
-        generateChart(daysData);
         generateChart(milesData);
       }
   });
