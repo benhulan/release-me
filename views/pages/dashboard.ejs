@@ -39,10 +39,9 @@
             <label for="targetMiles">Enter the target mileage for the end of the lease:</label>
             <input type="targetMiles" class="form-control" id="targetMiles" placeholder="15000">
           </div>
-
-          <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
-          <button type="submit" class="btn btn-default" id="startOver">Start Over</button>
-
+          <button type="button" class="btn btn-default" id="submitButton">Submit</button>
+          <button type="button" class="btn btn-default" id="startOver">Start Over</button>
+          <div id="placeholder"></div>
         </form>
         <div class="padMe" style="padding-bottom: 10px;"></div>
     </div>
@@ -164,7 +163,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         milesData.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
         milesData.push({"label": "Planned", "value": expectedCommuterMiles});
         milesData.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-       $("#pie-chart").append("<button id='generate'>Generate Charts</button>");
+       $("#placeholder").html("<button type='button' class='btn btn-default' id='generate'>Generate Charts</button>");
         // generateChart(milesData);
       }
   });
