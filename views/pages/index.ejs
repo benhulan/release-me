@@ -51,6 +51,7 @@
           </div>
 
           <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
+          <button type="submit" class="btn btn-default" id="startOver">Start Over</button>
         </form>
         <div class="padMe" style="padding-bottom: 10px;"></div>
     </div>
@@ -136,6 +137,10 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     localStorage.setItem('currentMiles', currentMiles);
     localStorage.setItem('targetMiles', targetMiles);
     localStorage.setItem('averageDailyMiles', averageDailyMiles);
+  });
+
+  $('#startOver').on('click', function(){
+    localStorage.clear();
   });
 
   $(document).ready(function() {
