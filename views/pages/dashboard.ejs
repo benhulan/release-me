@@ -100,39 +100,22 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       localStorage.setItem('daysLeft', diffDays);
       daysData.push({"label": "Used", "value":diffDays});
       daysData.push({"label": "Remaining", "value":(threeYears - diffDays)});
-      // generateChart(daysData);
     } return diffDays;
   };
 
   $("#submitButton").on("click", function(){
     daysLeft();
+
+    currentMiles = $("#currentMiles").val();
+    targetMiles = $("#targetMiles").val();
+    remainingMiles = (targetMiles - currentMiles);
+    averageDailyMiles = Math.round(remainingMiles/diffDays);
+    $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
+
     $("#result").html(resultString);
     generateChart(daysData);
   });
 
-  $("#currentMiles").on("change", function(){
-    currentMiles = $("#currentMiles").val();
-    if (targetMiles) { 
-      targetMiles = $("#targetMiles").val();
-      remainingMiles = (targetMiles - currentMiles);
-      averageDailyMiles = Math.round(remainingMiles/daysLeft());
-      $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
-    } else { 
-      return;
-    }
-  });
-
-  $("#targetMiles").on("change", function(){
-    targetMiles = $("#targetMiles").val();
-    if (currentMiles) { 
-      currentMiles = $("#currentMiles").val();
-      remainingMiles = (targetMiles - currentMiles);
-      averageDailyMiles = Math.round(remainingMiles/daysLeft());
-      $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
-    } else { 
-      return;
-    }
-  });
 
   $('#submitButton').on('click', function(){
     localStorage.setItem('currentMiles', currentMiles);
