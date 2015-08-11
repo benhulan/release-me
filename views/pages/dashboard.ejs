@@ -67,10 +67,10 @@
 <script type="text/javascript">
   /* D3.js vars */
 var w = 400;
-var h = 800;
-var r = 180;
+var h = 400;
+var r = 160;
 // var ir = 45;
-// var textOffset = 14;
+var textOffset = 14;
 var color = d3.scale.category20c();
 var data = [];
 
@@ -158,7 +158,8 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         data.push({"label": "Used", "value": Number(localStorage.getItem('currentMiles'))});
         data.push({"label": "Planned", "value": expectedCommuterMiles});
         data.push({"label": "Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-        $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
+       // $("#pie-chart").append("<button id='generate' onclick='generateChart(data)'>Generate Chart</button>");
+        generateChart(data);
       }
   });
 
