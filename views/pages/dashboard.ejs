@@ -70,8 +70,8 @@ var w = 450;
 var h = 300;
 var r = 100;
 // var ir = 45;
-var textOffset = 120;
-var color = d3.scale.category20();
+// var textOffset = 14;
+var color = d3.scale.category20c();
 var data = [];
 
 /* custom vars */
@@ -185,7 +185,7 @@ var generateChart = function(data){
   arcs.append("svg:text").attr("transform", function(d){
         d.innerRadius = 0;
         d.outerRadius = r;
-      return "translate(" + arc.centroid(d)*1.2 + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
       return data[i].label;}
       );
 };
