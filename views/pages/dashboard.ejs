@@ -79,7 +79,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   $("#leaseDate").datepicker();
   var resultString = "";
   var daysLeft = function() {
-    var a = $( "#leaseDate" ).datepicker('getDate').options({'inline': true}).viewMode('months').getTime();
+    var a = $( "#leaseDate" ).datepicker('getDate').options({'inline': true, 'viewMode': 'months'}).getTime();
     var tempDate = new Date(a);
     localStorage.setItem('endDate', tempDate.toDateString());
     var b = today.getTime();
