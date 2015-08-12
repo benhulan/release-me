@@ -90,8 +90,8 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     } else {
       resultString = ("<p>You have " + diffDays + " days left on your lease.</p>");
       localStorage.setItem('daysLeft', diffDays);
-      daysData.push({"label": "Days Passed", "value":diffDays});
-      daysData.push({"label": "Days Remaining", "value":(threeYears - diffDays)});
+      daysData.push({"label": "Days Remaining", "value":diffDays});
+      daysData.push({"label": "Days Passed", "value":(threeYears - diffDays)});
     } return diffDays;
   };
 
