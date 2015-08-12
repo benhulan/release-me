@@ -79,7 +79,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   $("#leaseDate").datepicker();
   var resultString = "";
   var daysLeft = function() {
-    var a = $( "#leaseDate" ).datepicker('getDate', {'inline': true, 'viewMode': 'years'}).getTime();
+    var a = $( "#leaseDate" ).datepicker('getDate', {'inline': true, 'viewMode': 'months'}).getTime();
     var tempDate = new Date(a);
     localStorage.setItem('endDate', tempDate.toDateString());
     var b = today.getTime();
@@ -97,15 +97,14 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
   $("#submitButton").on("click", function(){
     daysLeft();
-
-    localStorage.setItem('currentMiles', currentMiles);
-    localStorage.setItem('targetMiles', targetMiles);
-    localStorage.setItem('remainingMiles', remainingMiles);
-    localStorage.setItem('averageDailyMiles', averageDailyMiles);
     currentMiles = $("#currentMiles").val();
     targetMiles = $("#targetMiles").val();
     remainingMiles = (targetMiles - currentMiles);
     averageDailyMiles = Math.round(remainingMiles/localStorage.daysLeft);
+    localStorage.setItem('currentMiles', currentMiles);
+    localStorage.setItem('targetMiles', targetMiles);
+    localStorage.setItem('remainingMiles', remainingMiles);
+    localStorage.setItem('averageDailyMiles', averageDailyMiles);
     $("#answer").html("<p>You need to average less than  " + averageDailyMiles + " miles per day to meet your lease.</p>");
     $("#result").html(resultString);
     generateChart(daysData);
