@@ -64,29 +64,6 @@
 <script type="text/javascript">
 /* custom vars */
 
-  $("#submitButton").on("click", function(){
-    daysLeft();
-    currentMiles = $("#currentMiles").val();
-    targetMiles = $("#targetMiles").val();
-    remainingMiles = (targetMiles - currentMiles);
-    averageDailyMiles = Math.round(remainingMiles/localStorage.daysLeft);
-    $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
-    $("#result").html(resultString);
-    localStorage.setItem('currentMiles', currentMiles);
-    localStorage.setItem('targetMiles', targetMiles);
-    localStorage.setItem('remainingMiles', remainingMiles);
-    localStorage.setItem('averageDailyMiles', averageDailyMiles);
-    generateChart(daysData);
-  });
-
-  $('#startOver').on('click', function(){
-    localStorage.clear();
-  });
-
-  $('#generate').on('click', function(){
-    generateChart(milesData);
-  });
-
   $(document).ready(function() {
 //    $('#nav_index').removeClass("active");
     $('#nav_dashboard').addClass("active");

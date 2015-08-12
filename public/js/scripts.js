@@ -9,6 +9,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
   $("#leaseDate").datepicker();
   var resultString = "";
+
   var daysLeft = function() {
     var a = $( "#leaseDate" ).datepicker('getDate').getTime();
     var tempDate = new Date(a);
@@ -26,6 +27,29 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
     } return diffDays;
   };
 
+
+  $("#submitButton").on("click", function(){
+    daysLeft();
+    currentMiles = $("#currentMiles").val();
+    targetMiles = $("#targetMiles").val();
+    remainingMiles = (targetMiles - currentMiles);
+    averageDailyMiles = Math.round(remainingMiles/localStorage.daysLeft);
+    $("#answer").html("<p>You need to drive less than  " + averageDailyMiles + " miles per day.</p>");
+    $("#result").html(resultString);
+    localStorage.setItem('currentMiles', currentMiles);
+    localStorage.setItem('targetMiles', targetMiles);
+    localStorage.setItem('remainingMiles', remainingMiles);
+    localStorage.setItem('averageDailyMiles', averageDailyMiles);
+    generateChart(daysData);
+  });
+
+  $('#startOver').on('click', function(){
+    localStorage.clear();
+  });
+
+  $('#generate').on('click', function(){
+    generateChart(milesData);
+  });
 
 
 
