@@ -1,3 +1,36 @@
+var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
+  var today = new Date();
+  var diffDays;
+  var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
+
+  var curr_date = today.getDate();
+  var curr_month = today.getMonth();
+  var curr_year = today.getFullYear();
+  $("#todayDate").html("<p>Today is " + m_names[curr_month] + ". " + curr_date + ", " + curr_year + "</p>");
+
+  $("#leaseDate").datepicker();
+  var resultString = "";
+  var daysLeft = function() {
+    var a = $( "#leaseDate" ).datepicker('getDate').getTime();
+    var tempDate = new Date(a);
+    localStorage.setItem('endDate', tempDate.toDateString());
+    var b = today.getTime();
+    var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
+    diffDays = Math.round((a - b)/c);
+    if (diffDays < 0 ) {
+      resultString = "<p>Please pick a date in the future.</p>";
+    } else {
+      resultString = ("<p>You have " + diffDays + " days left on your lease.</p>");
+      localStorage.setItem('daysLeft', diffDays);
+      daysData.push({"label": "Used", "value":diffDays});
+      daysData.push({"label": "Remaining", "value":(threeYears - diffDays)});
+    } return diffDays;
+  };
+
+
+
+
+
 var w = 400;
 var h = 400;
 var r = 160;
