@@ -6,7 +6,6 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var curr_date = today.getDate();
   var curr_month = today.getMonth();
   var curr_year = today.getFullYear();
-  $("#todayDate").html("<p>Today is " + m_names[curr_month] + ". " + curr_date + ", " + curr_year + "</p>");
 
   $("#leaseDate").datepicker();
   var resultString = "";
