@@ -89,7 +89,7 @@
               var temp = (response['routes'][0]['legs'][0]['distance']['text']).replace(' mi', '');
               localStorage.setItem('commuteDistance', temp);
               directionsDisplay.setDirections(response);
-              $('#note').html("<p>This information has been added to the <a href='/index'>dashboard</a>.</p>")
+              $('#note').html("<p>This information has been added to the <a href='/dashboard'>dashboard</a>.</p>")
             } else {
               console.log('something went wrong');
             }
