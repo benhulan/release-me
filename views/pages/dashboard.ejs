@@ -68,7 +68,7 @@
 /* custom vars */
 var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var today = new Date();
-  var diffDays, tempDate;
+  var diffDays;
   var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec");
 
   var curr_date = today.getDate();
@@ -80,7 +80,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
   var resultString = "";
   var daysLeft = function() {
     var a = $( "#leaseDate" ).datepicker('getDate', {'inline': true, 'viewMode': 'months'}).getTime();
-    tempDate = new Date(a);
+    var tempDate = new Date(a);
     localStorage.setItem('endDate', tempDate.toDateString());
     var b = today.getTime();
     var c = 24*60*60*1000, // hours per day, minutes per hour, seconds per minute, ms per sec
@@ -118,8 +118,9 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       // $('#nav_dashboard').addClass("active");
 
     if (localStorage.endDate) {
-        console.log(tempDate);
-       $("#leaseDate").datepicker('setDate', tempDate);
+        var tempDate2 = Date.parse(localStorage.endDate);
+        console.log(tempDate2);
+       $("#leaseDate").datepicker('setDate', tempDate2);
     }
     if (localStorage.currentMiles) {
       $("#currentMiles").val(localStorage.currentMiles);
