@@ -105,7 +105,15 @@
   <script type="text/javascript">
       $(document).ready(function() {
   //        $('#nav_dashboard').removeClass("active");
+        if (localStorage.commuteStart) {
+          $("#start-input").val(localStorage.commuteStart);
+        }
+        if (localStorage.commuteEnd) {
+          $("#end-input").val(localStorage.commuteEnd);
+        }
           $('#nav_map').addClass("active");
+        }
+        }
       });
   </script>
   <!-- Bootstrap core JavaScript

@@ -42,7 +42,7 @@
             <label for="targetMiles">Enter the target mileage for the end of the lease:</label>
             <input type="targetMiles" class="form-control" id="targetMiles" placeholder="15000">
           </div>
-          <button type="button" class="btn btn-default" id="submitButton">Submit</button>
+          <button type="button" class="btn btn-default" id="submitButton">Show Days</button>
           <button type="button" class="btn btn-default" id="startOver">Start Over</button>
         <div class="padMe" style="padding-bottom: 10px;"></div>
           <div id="placeholder"></div>
@@ -146,7 +146,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
         milesData.push({"label": "Miles Used", "value": Number(localStorage.getItem('currentMiles'))});
         milesData.push({"label": "Planned Commutes", "value": expectedCommuterMiles});
         milesData.push({"label": "Miles Remaining", "value": (localStorage.remainingMiles - expectedCommuterMiles)});
-       $("#placeholder").html("<button type='button' class='btn btn-default' id='generate'>Generate Charts</button>");
+       $("#placeholder").html("<button type='button' class='btn btn-default' id='generate'>Show Miles</button>");
         // generateChart(milesData);
       }
           $('#nav_index').removeClass("active");
