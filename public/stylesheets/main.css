@@ -99,8 +99,8 @@ svg:not(:root) {
       font-size: 24px;
     }
 }
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   .col-md-6 {
       width: 100%;
   }
-}
+}*/
