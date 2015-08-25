@@ -118,10 +118,18 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       // $('#nav_dashboard').addClass("active");
 
     if (localStorage.endDate) {
-        console.log(localStorage.endDate.valueOf());
         var tempDate2 = localStorage.endDate.valueOf();
+        console.log(tempDate2);
        $("#leaseDate").datepicker('setDate', tempDate2);
     }
+    if (localStorage.currentMiles) {
+      $("#currentMiles").value = localStorage.currentMiles;
+    }
+
+    if (localStorage.targetMiles) {
+      $("#targetMiles").value = localStorage.targetMiles;
+    }
+
     if (localStorage.daysLeft) {
         $("#result").html("<p>You entered an end date of " + localStorage.endDate + "</p><p>You have " + localStorage.daysLeft + " days remaining on your lease.</p>");
       };
