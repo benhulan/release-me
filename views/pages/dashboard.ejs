@@ -116,6 +116,11 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
 
   $(document).ready(function() {
       // $('#nav_dashboard').addClass("active");
+
+    if (localStorage.endDate) {
+        var temp = localStorage.endDate;
+       $("#leaseDate").datepicker('setDate', temp.valueOf());
+    }
     if (localStorage.daysLeft) {
         $("#result").html("<p>You entered an end date of " + localStorage.endDate + "</p><p>You have " + localStorage.daysLeft + " days remaining on your lease.</p>");
       };
