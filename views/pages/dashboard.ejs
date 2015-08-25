@@ -119,8 +119,7 @@ var currentMiles, targetMiles, remainingMiles, averageDailyMiles;
       // $('#nav_dashboard').addClass("active");
 
     if (localStorage.endDate) {
-        var tempDate2 = Date(localStorage.endDate);
-        console.log(tempDate2); // this works
+        var tempDate2 = new Date(localStorage.endDate);
        $("#leaseDate").datepicker('setDate', tempDate2);
     }
     if (localStorage.currentMiles) {
