@@ -17,6 +17,14 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
+app.get('/index', function(request, response){
+  response.render('pages/index')
+});
+
+app.get('/dashboard', function(request, response){
+  response.render('pages/dashboard')
+});
+
 app.get('/map', function(request, response){
   response.render('pages/map')
 });
@@ -27,14 +35,6 @@ app.get('/trips', function(request, response){
 
 app.get('/spending', function(request, response){
   response.render('pages/spending')
-});
-
-app.get('/dashboard', function(request, response){
-  response.render('pages/dashboard')
-});
-
-app.get('/index', function(request, response){
-  response.render('pages/index')
 });
 
 

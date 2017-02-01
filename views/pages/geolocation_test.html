@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+   
+    </style>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!--
+    Include the maps javascript with sensor=true because this code is using a
+    sensor (a GPS locator) to determine the user's location.
+    See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+  </head>
+  <body>
+ <div id="panel">
+    <form>
+      <div class="form-group">
+        <label for="startingPoint">Starting Point</label>
+        <input type="start" class="form-control" id="startingPoint" placeholder="Enter starting point (or use current location shown below)">
+      </div>
+      <div class="form-group">
+        <label for="endingPoint">Ending Point</label>
+        <input type="end" class="form-control" id="endingPoint" placeholder="Ending Point">
+      </div>
+      
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Round Trip
+        </label>
+      </div>
+      <button class="btn btn-default" onclick="calcRoute();">Calculate</button>
+    </form>
+ <!--
+    <b>End: </b>
+    <select id="end" onchange="calcRoute();">
+      <option value="coit tower, san francisco, ca">Coit Tower</option>
+      <option value="transamerica building, san francisco, ca">TransAmerica Building</option>
+      <option value="180 New Montgomery, San Francisco, CA 94105">180 NM</option>  
+      <option value="Golden Gate Park, San Francisco">Golden Gate Park</option>
+      <option value="1 Ferry Plaza, San Francisco, CA">Ferry Building</option>
+      <option value="AT&T Park, San Francisco">Giants Stadium</option>
+    </select>
+
+
+  -->
+</div>
+
+<div id="map-canvas"></div>
+<script type="text/javascript">
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var pos = {};
+
+var newLocation = new google.maps.LatLng(37.790,-122.407);
+
+function initialize() {
+  directionsDisplay = new google.maps.DirectionsRenderer();
+
+  var mapOptions = {
+    zoom: 15,
+    center: newLocation
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+ directionsDisplay.setMap(map);
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+        pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // add marker here
+
+        var youAreHere = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: "You are Here."
+        });
+
+        map.setCenter(pos);
+
+    // calcRoute();
+
+    
+    }, function() {
+      handleNoGeolocation(true);
+    });
+
+};
+
+var calcRoute = function() {
+      var start = pos;
+      var end = document.getElementById('end').value;
+      var request = {
+        origin:pos,
+        destination:end,
+        travelMode: google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(request, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(request);
+        }
+      });
+    };
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+ </body>
+</html>
+
